@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80e415ea-1e8c-44ef-aa57-66f281246f8b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestClass.java" afterDir="false" />
+    <list default="true" id="80e415ea-1e8c-44ef-aa57-66f281246f8b" name="Changes" comment="Added Basic RestAssured flow for the API">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utils/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Utils/BaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Test/TestClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +54,7 @@
     <configuration name="TestClass.AddDevice" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="NextGenIQ2RestAssured" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestClass" />
+      <option name="MAIN_CLASS_NAME" value="Test.TestClass" />
       <option name="METHOD_NAME" value="AddDevice" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
@@ -80,6 +78,14 @@
       <option name="presentableId" value="Default" />
       <updated>1726815585685</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added Basic RestAssured flow for the API">
+      <created>1726923942172</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726923942172</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -93,11 +99,15 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Basic RestAssured flow for the API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Basic RestAssured flow for the API" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/TestClass.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/Test/TestClass.java</url>
           <line>18</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
