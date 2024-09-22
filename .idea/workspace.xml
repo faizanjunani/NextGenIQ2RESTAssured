@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80e415ea-1e8c-44ef-aa57-66f281246f8b" name="Changes" comment="Added Basic RestAssured flow for the API">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utils/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Utils/BaseTest.java" afterDir="false" />
+    <list default="true" id="80e415ea-1e8c-44ef-aa57-66f281246f8b" name="Changes" comment="Setup framework for rest assured&#10;created config, base test and test classes&#10;created testng.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Test/TestClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Test/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Test/TestClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,21 +39,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
-    <configuration name="TestClass.AddDevice" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="TestClass" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="NextGenIQ2RestAssured" />
-      <option name="PACKAGE_NAME" value="" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
+      <option name="SUITE_NAME" value="" />
+      <option name="PACKAGE_NAME" value="Test" />
       <option name="MAIN_CLASS_NAME" value="Test.TestClass" />
       <option name="METHOD_NAME" value="AddDevice" />
-      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="PROPERTIES_FILE" value="" />
       <properties />
       <listeners />
       <method v="2">
@@ -65,7 +71,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.TestClass.AddDevice" />
+        <item itemvalue="TestNG.TestClass" />
       </list>
     </recent_temporary>
   </component>
@@ -85,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1726923942172</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Setup framework for rest assured&#10;created config, base test and test classes&#10;created testng.xml">
+      <created>1727006197211</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727006197211</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,7 +114,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Basic RestAssured flow for the API" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Basic RestAssured flow for the API" />
+    <MESSAGE value="Setup framework for rest assured&#10;created config, base test and test classes&#10;created testng.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setup framework for rest assured&#10;created config, base test and test classes&#10;created testng.xml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

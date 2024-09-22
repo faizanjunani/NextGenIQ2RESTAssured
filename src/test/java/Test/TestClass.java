@@ -8,6 +8,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import org.testng.collections.Maps;
 
 import java.util.Map;
@@ -17,10 +18,11 @@ import static org.testng.Assert.assertNotNull;
 
 public class TestClass extends BaseTest {
 
-    Config config = new Config();
-    protected RequestSpecification requestSpecification;
-    protected Response response;
-    protected int responseCode;
+    private Config config = new Config();
+    private RequestSpecification requestSpecification;
+    private Response response;
+    private int responseCode;
+    SoftAssert softAssert = new SoftAssert();
     @Test(testName = "Add device")
     public void AddDevice()
     {
@@ -34,28 +36,33 @@ public class TestClass extends BaseTest {
         System.out.println("Status Code is " +responseCode);
         System.out.println(response.getBody().asString());
         Assert.assertEquals(responseCode, 200);
+
     }
-    @Test(testName = "verify response details", dependsOnMethods = "AddDevice")
+    @Test(testName = "verify response details",dependsOnMethods = "AddDevice")
     public void verifyResponseDetails()
     {
         String name = response.jsonPath().getString("name");
         Map<String,Object> data = response.jsonPath().getMap("data");
-        Assert.assertEquals(name,config.name);
-        Assert.assertEquals(data.get("year"),config.year);
-        Assert.assertEquals(data.get("price"),config.price);
-        Assert.assertEquals(data.get("CPU model"),config.CPUModel);
-        Assert.assertEquals(data.get("Hard disk size"),config.HDDSize);
-
+        softAssert.assertEquals(name,config.name);
+        System.out.println("Actual Name = "+name+ " Expected Name "+config.name);
+        softAssert.assertEquals(data.get("year"),config.year);
+        System.out.println("Actual year = "+data.get("year")+ " Expected Name "+config.year);
+        softAssert.assertEquals(data.get("price"),config.price);
+        System.out.println("Actual Name = "+data.get("price")+ " Expected Name "+config.price);
+        softAssert.assertEquals(data.get("CPU model"),config.CPUModel);
+        System.out.println("Actual Name = "+data.get("CPU model")+ " Expected Name "+config.CPUModel);
+        softAssert.assertEquals(data.get("Hard disk size"),config.HDDSize);
+        System.out.println("Actual Name = "+data.get("Hard disk size")+ " Expected Name "+config.HDDSize);
+        softAssert.assertAll();
     }
     @Test(testName = "verify null values",dependsOnMethods = "verifyResponseDetails")
-    public void verifyForNullValues()
-    {
+    public void verifyForNullValues() {
         String Id = response.jsonPath().getString("id");
         System.out.println(Id);
         String createdAt = response.jsonPath().getString("createdAt");
         System.out.println(createdAt);
-        assertNotNull(Id,"Id should not be null");
-        assertNotNull(createdAt,"createdAt should not be null");
-
+        assertNotNull(Id, "Id should not be null");
+        assertNotNull(createdAt, "createdAt should not be null");
     }
+
 }
