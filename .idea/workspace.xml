@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80e415ea-1e8c-44ef-aa57-66f281246f8b" name="Changes" comment="Setup framework for rest assured&#10;created config, base test and test classes&#10;created testng.xml">
+    <list default="true" id="80e415ea-1e8c-44ef-aa57-66f281246f8b" name="Changes" comment="made sure payload include variables from the config file&#10;implemented assertions correctly and printed out responses&#10;All test methods are now executing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Test/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Test/TestClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Utils/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Utils/BaseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,14 +42,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\FaizanJunani\Desktop\NextGenIQ2RestAssured\NextGenIQ2RestAssured\target" />
+    </key>
+  </component>
+  <component name="RunManager" selected="TestNG.C:/Users/FaizanJunani/Desktop/NextGenIQ2RestAssured/NextGenIQ2RestAssured/testng.xml">
+    <configuration name="C:/Users/FaizanJunani/Desktop/NextGenIQ2RestAssured/NextGenIQ2RestAssured/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="NextGenIQ2RestAssured" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestClass" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="NextGenIQ2RestAssured" />
       <shortenClasspath name="NONE" />
@@ -69,8 +87,47 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestClass.BookDates" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="NextGenIQ2RestAssured" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.TestClass" />
+      <option name="METHOD_NAME" value="BookDates" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestClass.verifyResponseDetails" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="NextGenIQ2RestAssured" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.TestClass" />
+      <option name="METHOD_NAME" value="verifyResponseDetails" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.C:/Users/FaizanJunani/Desktop/NextGenIQ2RestAssured/NextGenIQ2RestAssured/testng.xml" />
+        <item itemvalue="TestNG.TestClass.BookDates" />
+        <item itemvalue="TestNG.TestClass.verifyResponseDetails" />
         <item itemvalue="TestNG.TestClass" />
       </list>
     </recent_temporary>
@@ -98,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727006197211</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="made sure payload include variables from the config file&#10;implemented assertions correctly and printed out responses&#10;All test methods are now executing">
+      <created>1727008066342</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1727008066343</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,15 +179,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Basic RestAssured flow for the API" />
     <MESSAGE value="Setup framework for rest assured&#10;created config, base test and test classes&#10;created testng.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setup framework for rest assured&#10;created config, base test and test classes&#10;created testng.xml" />
+    <MESSAGE value="made sure payload include variables from the config file&#10;implemented assertions correctly and printed out responses&#10;All test methods are now executing" />
+    <option name="LAST_COMMIT_MESSAGE" value="made sure payload include variables from the config file&#10;implemented assertions correctly and printed out responses&#10;All test methods are now executing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Test/TestClass.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="1" />
+          <line>93</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

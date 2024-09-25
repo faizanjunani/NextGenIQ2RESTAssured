@@ -2,6 +2,9 @@ package Test;
 
 import Utils.BaseTest;
 import Utils.Config;
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -22,47 +25,92 @@ public class TestClass extends BaseTest {
     private RequestSpecification requestSpecification;
     private Response response;
     private int responseCode;
+    String bookingId;
+
     SoftAssert softAssert = new SoftAssert();
-    @Test(testName = "Add device")
-    public void AddDevice()
+    @Test(testName = "Book Dates")
+    @Step
+    @Description("Book Dates")
+    public void BookDates()
     {
-        String jsonRequestBody = "{ \"name\": \""+config.name+"\", \"data\": { \"year\": \""+config.year+"\", \"price\": \""+config.price+"\", \"CPU model\": \""+config.CPUModel+"\", \"Hard disk size\": \""+config.HDDSize+"\" } }";
+        String jsonRequestBody = config.jsonRequestBody;
+
         requestSpecification = given();
-        //requestSpecification.header("Authorization","Bearer 29b834f73e53912fb8aaa568ccbedf5d769fbb20d9fae5139e53ccc3543b7a75");
+        requestSpecification.filter(new AllureRestAssured());
         requestSpecification.contentType(ContentType.JSON);
         requestSpecification.body(jsonRequestBody);
-        response = requestSpecification.post();
+        response = requestSpecification.post("/booking");
         responseCode = response.getStatusCode();
-        System.out.println("Status Code is " +responseCode);
-        System.out.println(response.getBody().asString());
-        Assert.assertEquals(responseCode, 200);
+        System.out.println("Status Code for POST Request is " +responseCode);
+        System.out.println(response.prettyPrint());
+        softAssert.assertEquals(responseCode, 200);
+        softAssert.assertAll();
 
     }
-    @Test(testName = "verify response details",dependsOnMethods = "AddDevice")
+    @Test(testName = "verify response details",dependsOnMethods = "BookDates")
+    @Step
+    @Description("Verify the response details of booking")
     public void verifyResponseDetails()
     {
-        String name = response.jsonPath().getString("name");
-        Map<String,Object> data = response.jsonPath().getMap("data");
-        softAssert.assertEquals(name,config.name);
-        System.out.println("Actual Name = "+name+ " Expected Name "+config.name);
-        softAssert.assertEquals(data.get("year"),config.year);
-        System.out.println("Actual year = "+data.get("year")+ " Expected Name "+config.year);
-        softAssert.assertEquals(data.get("price"),config.price);
-        System.out.println("Actual Name = "+data.get("price")+ " Expected Name "+config.price);
-        softAssert.assertEquals(data.get("CPU model"),config.CPUModel);
-        System.out.println("Actual Name = "+data.get("CPU model")+ " Expected Name "+config.CPUModel);
-        softAssert.assertEquals(data.get("Hard disk size"),config.HDDSize);
-        System.out.println("Actual Name = "+data.get("Hard disk size")+ " Expected Name "+config.HDDSize);
-        softAssert.assertAll();
+        printandAssertDataFromMap(config.firstName,"booking",response,"firstname");
+        printandAssertDataFromMap(config.lastName,"booking",response,"lastname");
+        printandAssertDataFromMap(String.valueOf(config.depositPaid),"booking",response,"depositpaid");
+        printandAssertDataFromMap(String.valueOf(config.totalPrice),"booking", response,"totalprice");
+        printandAssertDataFromMap(config.checkIn,"booking.bookingdates",response,"checkin");
+        printandAssertDataFromMap(config.checkOut,"booking.bookingdates",response,"checkout");
     }
     @Test(testName = "verify null values",dependsOnMethods = "verifyResponseDetails")
+    @Step
+    @Description("Verify if any values are null")
     public void verifyForNullValues() {
-        String Id = response.jsonPath().getString("id");
-        System.out.println(Id);
-        String createdAt = response.jsonPath().getString("createdAt");
-        System.out.println(createdAt);
-        assertNotNull(Id, "Id should not be null");
-        assertNotNull(createdAt, "createdAt should not be null");
+        bookingId = response.jsonPath().getString("bookingid");
+        System.out.println("Booking Id is = "+bookingId);
+        softAssert.assertNotNull(bookingId, "Id should not be null");
+        softAssert.assertAll();
     }
 
+    @Test(testName = "list booking details by booking Id", dependsOnMethods = "verifyForNullValues",priority = 2)
+    @Step
+    @Description("List the booking details for the new booking Id")
+    public void listBookingDetails()
+    {
+        requestSpecification = given();
+        requestSpecification.filter(new AllureRestAssured());
+        requestSpecification.baseUri(config.listBooking);
+        requestSpecification.contentType(ContentType.JSON);
+        response = requestSpecification.get("/booking/"+bookingId);
+        responseCode = response.getStatusCode();
+        System.out.println("Status Code for GET Request is " +responseCode);
+        System.out.println(response.prettyPrint());
+        softAssert.assertEquals(responseCode, 200, "Expected and Actual response code does not match");
+        softAssert.assertAll();
+    }
+
+    @Test(testName = "verify invalid deposit paid details",dependsOnMethods = "verifyForNullValues", priority = 1)
+    @Step
+    @Description("check invalid deposit paid value")
+    public void verifyInvalidDepositPaid()
+    {
+        printandAssertDataFromMap(false,"booking",response,"depositpaid");
+        softAssert.assertAll();
+
+    }
+
+    @Test(testName = "list booking details with invalid booking Id", dependsOnMethods = "verifyInvalidDepositPaid")
+    @Step
+    @Description("List booking details with invalid booking Id")
+    public void listBookingDetailswithInvalidBookingId()
+    {
+        requestSpecification = given();
+        requestSpecification.filter(new AllureRestAssured());
+        requestSpecification.baseUri(config.listBooking);
+        requestSpecification.contentType(ContentType.JSON);
+        response = requestSpecification.get("/booking/"+config.invalidBookingId);
+        responseCode = response.getStatusCode();
+        System.out.println("Status Code for GET Request is " +responseCode);
+        System.out.println(response.prettyPrint());
+        softAssert.assertEquals(responseCode, 404,"Expected and Actual response code does not match");
+        softAssert.assertAll();
+
+    }
 }
